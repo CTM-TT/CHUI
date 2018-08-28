@@ -1,22 +1,117 @@
 <template>
-  <view class="ch-tab">
-    <view>ChTab Component</view>
+  <view class="i-class i-tabs-tab {{ scroll ? 'i-tabs-tab-scroll' : '' }} {{ current ? 'i-tabs-tab-current' : '' }}">
+    <i-badge dot="{{ dot }}" count="{{ dot ? 0 : count }}">
+      <view bindtap="handleClickItem">
+        <view class="i-tabs-tab-title {{ current ? 'i-tabs-tab-title-current' : '' }}" wx:if="{{ current && currentColor }}" style="color: {{ currentColor }}">{{ title }}</view>
+        <view class="i-tabs-tab-title {{ current ? 'i-tabs-tab-title-current' : '' }}" wx:else>{{ title }}</view>
+      </view>
+    </i-badge>
+    <view class="i-tabs-tab-bar" wx:if="{{ current }}" style="background: {{ currentColor }}"></view>
   </view>
 </template>
 
 <script>
 export default {
   config: {
-    usingComponents: {}
+    usingComponents: {
+      "i-badge": "@chui/ch-badge"
+    }
+  },
+  externalClasses: ["i-class"],
+
+  relations: {
+    "../../ch-tabs/dist/index.js": {
+      type: "parent"
+    }
   },
   behaviors: [],
-  properties: {},
-  data: {},
-  methods: {}
+  properties: {
+    key: {
+      type: String,
+      value: ""
+    },
+    title: {
+      type: String,
+      value: ""
+    },
+    dot: {
+      type: Boolean,
+      value: false
+    },
+    count: {
+      type: Number,
+      value: 0
+    }
+  },
+  data: {
+    current: false,
+    currentColor: "",
+    scroll: false
+  },
+  methods: {
+    changeCurrent(current) {
+      this.setData({
+        current
+      });
+    },
+    changeCurrentColor(currentColor) {
+      this.setData({
+        currentColor
+      });
+    },
+    changeScroll(scroll) {
+      this.setData({
+        scroll
+      });
+    },
+    handleClickItem() {
+      const parent = this.getRelationNodes("../tabs/index")[0];
+      parent.emitEvent(this.data.key);
+    }
+  }
 };
 </script>
 
-<style>
-.ch-tab {
+<style lang="pcss">
+.i-tabs-tab {
+  flex: 1;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+}
+
+.i-tabs-tab-bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: 0 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #2d8cf0;
+}
+
+.i-tabs-tab-title {
+  font-size: 14px;
+  text-align: center;
+  box-sizing: border-box;
+  color: #80848f;
+}
+
+.i-tabs-tab-title-current {
+  color: #2d8cf0;
+}
+
+.i-tabs-tab-scroll {
+  display: inline-block;
+  width: 60px;
 }
 </style>

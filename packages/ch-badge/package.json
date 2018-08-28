@@ -1,0 +1,16 @@
+{
+  "name": "@chui/ch-badge",
+  "version": "1.0.0",
+  "description": "数字角标 - 小程序组件",
+  "main": "dist/index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/meili/minui/tree/master/packages/ch-badge"
+  },
+  "author": "",
+  "license": "MIT",
+  "minConfig": {
+    "component": true
+  }
+}

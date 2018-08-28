@@ -1,0 +1,74 @@
+<template>
+  <view>
+    <view title="基本用法"></view>
+
+    <ch-tabs current="{{ current }}" bindchange="handleChange">
+      <ch-tab key="tab1" title="选项1"></ch-tab>
+      <ch-tab key="tab2" title="选项2"></ch-tab>
+      <ch-tab key="tab3" title="选项3"></ch-tab>
+    </ch-tabs>
+
+    <view title="自定义主题色"></view>
+
+    <ch-tabs current="{{ current }}" color="#f759ab" bindchange="handleChange">
+      <ch-tab key="tab1" title="选项1"></ch-tab>
+      <ch-tab key="tab2" title="选项2"></ch-tab>
+      <ch-tab key="tab3" title="选项3"></ch-tab>
+    </ch-tabs>
+
+    <view title="徽标"></view>
+
+    <ch-tabs current="{{ current }}" bindchange="handleChange">
+      <ch-tab key="tab1" title="选项1" count="3"></ch-tab>
+      <ch-tab key="tab2" title="选项2"></ch-tab>
+      <ch-tab key="tab3" title="选项3" dot></ch-tab>
+    </ch-tabs>
+
+    <view title="滚动"></view>
+
+    <ch-tabs current="{{ current_scroll }}" scroll bindchange="handleChangeScroll">
+      <ch-tab key="tab1" title="选项1"></ch-tab>
+      <ch-tab key="tab2" title="选项2"></ch-tab>
+      <ch-tab key="tab3" title="选项3"></ch-tab>
+      <ch-tab key="tab4" title="选项4"></ch-tab>
+      <ch-tab key="tab5" title="选项5"></ch-tab>
+      <ch-tab key="tab6" title="选项6"></ch-tab>
+      <ch-tab key="tab7" title="选项7"></ch-tab>
+      <ch-tab key="tab8" title="选项8"></ch-tab>
+      <ch-tab key="tab9" title="选项9"></ch-tab>
+    </ch-tabs>
+  </view>
+
+</template>
+
+<script>
+export default {
+  config: {
+    usingComponents: {
+      "ch-tabs": "@chui/ch-tabs",
+      "ch-tab": "@chui/ch-tab"
+    }
+  },
+  data: {
+    current: "tab1",
+    current_scroll: "tab1"
+  },
+
+  methods: {
+    handleChange({ detail }) {
+      this.setData({
+        current: detail.key
+      });
+    },
+
+    handleChangeScroll({ detail }) {
+      this.setData({
+        current_scroll: detail.key
+      });
+    }
+  }
+};
+</script>
+
+<style>
+</style>

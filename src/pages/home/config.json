@@ -7,6 +7,18 @@
       "icon": "https://s10.mogucdn.com/mlcdn/c45406/171122_7al50lach13ji6jggj63d17h522dh_200x200.png",
       "pages": [
         {
+          "id": "badge",
+          "name": "数字角标",
+          "icon": "",
+          "code": ""
+        },
+        {
+          "id": "tabs",
+          "name": "切换栏",
+          "icon": "",
+          "code": ""
+        },
+        {
           "id": "tab",
           "name": "tab组件",
           "icon": "",
