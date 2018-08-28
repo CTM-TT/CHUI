@@ -1,0 +1,18 @@
+<template>
+  <ch-tab></ch-tab>
+</template>
+
+<script>
+export default {
+  config: {
+    usingComponents: {
+      'ch-tab': '@chui/ch-tab'
+    }
+  },
+  data: { },
+  methods: { }
+}
+</script>
+
+<style>
+</style>
